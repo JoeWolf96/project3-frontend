@@ -1,4 +1,21 @@
-.App {
+body{
+  background-color: #fc9f47;
+  }
+  .userstuff{
+    border: 35px;
+    margin:50px;
+
+    background-color: white;
+    text-align: right;
+    color:gray;
+  }
+  .comment{
+    color:purple;
+
+    background-color:orange;
+    padding:35px;
+  }
+  .App {
   text-align: center;
 }
 
