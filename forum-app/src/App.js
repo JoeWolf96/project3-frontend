@@ -201,7 +201,11 @@ handleSubmit = async (e) => {
       <div className="App">
         <Nav loggingUser={this.loggingUser} register={this.register}/>
 
-          <h1> Forum </h1>
+          <h1> Nintendo Power Re: </h1>
+          <p class="intro">welcome to the new Nintendo Power. remade Walkthrough and Cheatsheet for all Nintendo games lovers!</p>
+
+        <img src="https://i.imgur.com/TJKLh06.jpg" class="article1" width="300" height="200" />
+        <p class="article1description">need help finding all the containers? post here your latest findings</p>
           <NewForm baseUrl={ baseUrl } addTopic={ this.addTopic } />
 
           <TopicTable
