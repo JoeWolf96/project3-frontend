@@ -74,3 +74,7 @@ body{
     transform: rotate(360deg);
   }
 }
+
+p {
+  font-size: 20px;
+}
