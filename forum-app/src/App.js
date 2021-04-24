@@ -44,6 +44,7 @@ class App extends Component {
         return []
       }
     }).then(data => {
+      console.log(data)
       this.setState({
         topics: data,
       })
