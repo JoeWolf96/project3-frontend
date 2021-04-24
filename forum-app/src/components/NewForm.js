@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Skeleton from "react-loading-skeleton";
+
 
 export default class NewForm extends Component {
   constructor (props) {
@@ -47,7 +47,7 @@ export default class NewForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
       <div class="comment">
-        <label htmlFor="name">Add Comment: </label>
+        <label htmlFor="name">Add Game to your Collection! : </label>
         <input type="text" id="name" name="name" onChange={ (evt) => this.handleChange(evt) } value={ this.state.name } />
         <input type="submit" value="send comment"  />
         </div>

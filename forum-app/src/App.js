@@ -24,8 +24,7 @@ class App extends Component {
     this.state = {
       topics: [],
       modalOpen: false,
-      topicsToBeEdit:[],
-      description:'',
+      topicToBeEdited:[],
       name: '',
       userLogedIn: false
     }
@@ -142,7 +141,8 @@ class App extends Component {
 
 handleSubmit = async (e) => {
   e.preventDefault()
-    const url = baseUrl + '/topics/' + this.state.topicsToBeEdit._id
+    const url = baseUrl + '/topics/' + this.state.topicToBeEdited._id
+    console.log(this.state.topicToBeEdited._id)
     try{
       const response = await fetch( url , {
         method: 'PUT',
@@ -189,8 +189,7 @@ handleSubmit = async (e) => {
     this.setState({
       modalOpen:true,
       name: topic.name,
-      description: topic.description,
-      topicToBeEdit:topic
+      topicToBeEdited:topic
     })
   }
 
@@ -202,10 +201,10 @@ handleSubmit = async (e) => {
         <Nav loggingUser={this.loggingUser} register={this.register}/>
 
           <h1> Nintendo Power Re: </h1>
-          <p class="intro">welcome to the new Nintendo Power. remade Walkthrough and Cheatsheet for all Nintendo games lovers!</p>
+          <p class="intro">Welcome to the Collector's tracker! finally keep track easily of all those rare collectable games from the Nes and Snes!</p>
 
-        <img src="https://i.imgur.com/TJKLh06.jpg" alt=""  class="article1" width="300" height="200" />
-        <p class="article1description">need help finding all the containers? post here your latest findings</p>
+        <img src="https://i.imgur.com/JitideV.jpg" alt=""  class="article1" width="300" height="200" />
+        <p class="article1description">Add your Nes/Snes Games collection here</p>
           <NewForm baseUrl={ baseUrl } addTopic={ this.addTopic } />
 
           <TopicTable
@@ -221,8 +220,6 @@ handleSubmit = async (e) => {
             <form onSubmit={this.handleSubmit}>
               <label>Edit: </label>
               <input name="name" value={this.state.name} onChange={this.handleChange}/> <br/>
-
-
               <button>submit Edit</button>
 
             </form>
