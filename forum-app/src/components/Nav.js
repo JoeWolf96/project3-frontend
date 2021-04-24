@@ -1,6 +1,9 @@
+
 export default function Nav(props) {
     return(
         <nav>
+        <div class="userstuff">
+
             <form onSubmit={props.loggingUser}>
                 <strong>Login</strong>
                 <label htmlFor="name">Username: </label>
@@ -18,6 +21,7 @@ export default function Nav(props) {
                 <input type="text" id="password" name="password"/>
                 <input type="submit" value="signup" />
             </form>
+            </div>
         </nav>
     )
 }

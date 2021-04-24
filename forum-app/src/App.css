@@ -1,4 +1,42 @@
-.App {
+.article1{
+
+  text-align: center;
+
+
+}
+.article1description{
+
+  flex-shrink: 1;
+
+  color:crimson;
+  text-align: center;
+}
+
+
+body{
+  color:white;
+  text-shadow: 5px 5px black;
+
+  background-image: url('https://i.imgur.com/OzYGLVM.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: black;
+  }
+  .userstuff{
+    border: 35px;
+    margin:50px;
+
+
+    text-align: right;
+    color:gray;
+  }
+  .comment{
+    color:white;
+
+
+    padding:35px;
+  }
+  .App {
   text-align: center;
 }
 

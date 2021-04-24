@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 export default class NewForm extends Component {
   constructor (props) {
     super(props)
@@ -45,9 +46,11 @@ export default class NewForm extends Component {
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="name">Name: </label>
+      <div class="comment">
+        <label htmlFor="name">Add Game to your Collection! : </label>
         <input type="text" id="name" name="name" onChange={ (evt) => this.handleChange(evt) } value={ this.state.name } />
-        <input type="submit" value="new topic" />
+        <input type="submit" value="send comment"  />
+        </div>
       </form>
     )
   }

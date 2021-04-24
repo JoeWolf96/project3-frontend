@@ -1,23 +1,29 @@
 
 
 const TopicTable = (props)=>{
+  console.log(props.topics)
     return (
 
         <table>
             <tbody>
-                {props.topics.map(topics => {
+                {props.topics.map(topic => {
                     return (
-                        <tr key={topics._id} >
-                            
-                            <td onClick={() => props.deleteTopic(topics._id)}>DELETE</td>
-                            <td onClick={() => props.showEditForm(topics)}>EDIT</td>
+                        <tr key={topic._id} >
+                        <td>{topic.name}</td>
+                        <td onClick={() => props.deleteTopic(topic._id)}> DELETE GAME </td>
+                        <td onClick={() => props.showEditForm(topic)}> EDIT GAME </td>
                         </tr>
                         )
                     })
                 }
             </tbody>
+
         </table>
+
+
+
     )
+
 }
 
 export default TopicTable

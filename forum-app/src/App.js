@@ -7,6 +7,8 @@ import Nav from './components/Nav'
 
 
 
+
+
 // more on React environment variables
 // https://create-react-app.dev/docs/adding-custom-environment-variables/
 
@@ -22,8 +24,7 @@ class App extends Component {
     this.state = {
       topics: [],
       modalOpen: false,
-      topicsToBeEdit:[],
-      description:'',
+      topicToBeEdited:[],
       name: '',
       userLogedIn: false
     }
@@ -136,42 +137,12 @@ class App extends Component {
     }
   }
 
-addLike = async (topics) => {
-    const url = baseUrl + '/topics/' + topics._id
 
-    try{
-
-      const response = await fetch( url , {
-        method: 'PUT',
-        body: JSON.stringify({
-          likes: topics.likes+1
-        }),
-        headers: {
-          'Content-Type' : 'application/json'
-        },
-        credentials: "include"
-      })
-
-      if (response.status===200){
-        const updatedTopics = await response.json()
-        const findIndex = this.state.topics.findIndex(topics => topics._id === updatedTopics.data._id)
-        const copyTopics = [...this.state.topics]
-        copyTopics[findIndex].likes = updatedTopics.data.likes
-
-        this.setState({
-          topics: copyTopics
-        })
-      }
-    }
-    catch(err){
-      console.log('Error => ', err);
-    }
-
-  }
 
 handleSubmit = async (e) => {
   e.preventDefault()
-    const url = baseUrl + '/topics/' + this.state.topics._id
+    const url = baseUrl + '/topics/' + this.state.topicToBeEdited._id
+    console.log(this.state.topicToBeEdited._id)
     try{
       const response = await fetch( url , {
         method: 'PUT',
@@ -190,6 +161,7 @@ handleSubmit = async (e) => {
         const findIndex = this.state.topics.findIndex(topics => topics._id === updatedTopics.data._id)
         const copyTopics = [...this.state.topics]
         copyTopics[findIndex] = updatedTopics.data
+
         this.setState({
           topics: copyTopics,
           modalOpen:false
@@ -217,23 +189,26 @@ handleSubmit = async (e) => {
     this.setState({
       modalOpen:true,
       name: topic.name,
-      description: topic.description,
-      topicToBeEdit:topic
+      topicToBeEdited:topic
     })
   }
 
   render () {
+    console.log(this.state.topics)
 
     return (
       <div className="App">
         <Nav loggingUser={this.loggingUser} register={this.register}/>
 
-          <h1> Forum </h1>
+          <h1> Nintendo Power Re: </h1>
+          <p class="intro">Welcome to the Collector's tracker! finally keep track easily of all those rare collectable games from the Nes and Snes!</p>
+
+        <img src="https://i.imgur.com/JitideV.jpg" alt=""  class="article1" width="300" height="200" />
+        <p class="article1description">Add your Nes/Snes Games collection here</p>
           <NewForm baseUrl={ baseUrl } addTopic={ this.addTopic } />
 
           <TopicTable
             topics={this.state.topics}
-            addLike={this.addLike}
             deleteTopic={this.deleteTopic}
             showEditForm={this.showEditForm}
             />
@@ -243,11 +218,9 @@ handleSubmit = async (e) => {
           {this.state.modalOpen &&
 
             <form onSubmit={this.handleSubmit}>
-              <label>Name: </label>
+              <label>Edit: </label>
               <input name="name" value={this.state.name} onChange={this.handleChange}/> <br/>
-
-
-              <button>submit</button>
+              <button>submit Edit</button>
 
             </form>
           }
